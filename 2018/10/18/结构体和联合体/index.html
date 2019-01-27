@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2019/1 | zl&amp;mf的小屋</title>
+  <title>结构体和联合体 | zl&amp;mf的小屋</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -208,87 +208,149 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 </div>
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/01/24/2018总结/">2018总结</a></h4>
-                            
-                            <p><time datetime="2019-01-24T04:36:14.000Z"><a href="/2019/01/24/2018总结/">2019-01-24</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/01/06/操作系统/">操作系统</a></h4>
-                            
-                            <p><time datetime="2019-01-06T02:24:03.000Z"><a href="/2019/01/06/操作系统/">2019-01-06</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/01/01/数据通信/">数据通信</a></h4>
-                            
-                            <p><time datetime="2019-01-01T02:21:36.000Z"><a href="/2019/01/01/数据通信/">2019-01-01</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-10-18T01:59:14.000Z" itemprop="datePublished">
+          2018-10-18
+      </time>
+    
+</span>
+                <h1>结构体和联合体</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>当多个数据需要共享内存或者多个数据每次只取其一时，可以利用联合体(union)。在C Programming Language 一书中对于联合体是这么描述的：<br>     1)联合体是一个结构；<br>     2)它的所有成员相对于基地址的偏移量都为0；<br>     3)此结构空间要大到足够容纳最”宽”的成员；<br>     4)其对齐方式要适合其中所有的成员；<br>下面解释这四条描述：<br>     由于联合体中的所有成员是共享一段内存的，因此每个成员的存放首地址相对于于联合体变量的基地址的偏移量为0，即所有成员的首地址都是一样的。为了使得所有成员能够共享一段内存，因此该空间必须足够容纳这些成员中最宽的成员。对于这句”对齐方式要适合其中所有的成员”是指其必须符合所有成员的自身对齐方式。<br>例如，代码：       </p>
+<pre><code>union U
+{
+char s[9];
+int n;
+double d;
+};
+</code></pre><p>s占9字节，n占4字节，d占8字节，因此其至少需9字节的空间。然而其实际大小并不是9，用运算符sizeof测试其大小为16.这是因为这里存在字节对齐的问题，9既不能被4整除，也不能被8整除。因此补充字节到16，这样就符合所有成员的自身对齐了。从这里可以看出联合体所占的空间不仅取决于最宽成员，还跟所有成员有关系，即其大小必须满足两个条件：1)大小足够容纳最宽的成员；2)大小能被其包含的所有基本数据类型的大小所整除。<br>测试程序：</p>
+<p>对于sizeof(u1)=16。因为u1中s占9字节，n占4字节，d占8字节，因此至少需要9字节。其包含的基本数据类型为char，int，double分别占1，4，8字节，为了使u1所占空间的大小能被1，4，8整除，则需填充字节以到16，因此sizeof(u1)=16.<br>对于sizeof(u2)=8。因为u2中s占5字节，n占4字节，d占8字节，因此至少需要8字节。其包含的基本数据类型为char，int，double分别占1，4，8字节，为了使u2所占空间的大小能被1，4，8整除，不需填充字节，因为8本身就能满足要求。因此sizeof(u2)=8。<br>从打印出的每个成员的基地址可以看出，联合体中每个成员的基地址都相同，等于联合体变量的首地址。(代码省略)<br>对u1.n=1，将u1的n赋值为1后，则该段内存的前4个字节存储的数据为00000001 00000000 00000000 00000000<br>因此取s[0]的数据表示取第一个单元的数据，其整型值为1，所以打印出的结果为1.<br>关于结构体和联合体所占内存空间大小的问题：</p>
+<pre><code>// Created by z lin zhang on 2018/10/16.
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>未来很长，慢慢地走。</p>
+#include &lt;stdio.h&gt;
+union U1
+ {
+   char s[ 9 ];
+   int n;
+   double d;
+ };
+
+ union U2
+ {
+   char s[ 5 ];
+   int n;
+   double d;
+ };
+
+ struct student{
+
+ char A;
+ int B;
+ short C;
+
+ }student1;
+struct tagPhone{
+ char   A;
+ short  C;
+ int    B;
+}Phone2;
+struct str2
+{
+double a;
+int b;
+char c;
+double d;
+}str21;
+int main(){
+union U1 u1;
+union U2 u2;
+printf(&quot;char short int float  double is %d %d %d %d     %d\n&quot;, sizeof(char), sizeof(short), sizeof(int),     sizeof(float),sizeof(double));
+printf(&quot;u1 is %d\n&quot;, sizeof(u1));
+printf(&quot;u2 is %d\n&quot;, sizeof(u2));
+printf(&quot;student1 is %d\n&quot;, sizeof(student1));
+printf(&quot;phone2 is %d\n&quot;, sizeof(Phone2));
+printf(&quot;str21 is %d\n&quot;, sizeof(str21));
+
+}
+</code></pre><p>输出结果是：<br>u1 is 16<br>u2 is 8<br>student1 is 12<br>phone2 is 8<br>str21 is 24<br>char short int float  double is 1  2  4  4  8<br>r</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/10/19/真题笔记/" style="float: left;">
+        ← 真题笔记
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/10/06/数据结构-树与二叉树/">
+        数据结构-树与二叉树 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 

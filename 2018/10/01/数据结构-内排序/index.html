@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>数据结构-内排序 | zl&amp;mf的小屋</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="zl&mf的小屋">
+    <meta name="author" content="幕天">
+    <meta name="description" content="小屋" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="zl&amp;mf的小屋" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">life</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">job</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/English/" class="animsition-link">English<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Markdown/" class="animsition-link">Markdown<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/girl/" class="animsition-link">girl<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/专业课/" class="animsition-link">专业课<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/互联网/" class="animsition-link">互联网<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/学习/" class="animsition-link">学习<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技巧/" class="animsition-link">技巧<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/政治/" class="animsition-link">政治<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/数据通信/" class="animsition-link">数据通信<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/旅行/" class="animsition-link">旅行<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/笔记/" class="animsition-link">笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/考研/" class="animsition-link">考研<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/考研复试/" class="animsition-link">考研复试<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/随笔/" class="animsition-link">随笔<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">zl&mf的小屋</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+</div>
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-10-01T01:59:14.000Z" itemprop="datePublished">
+          2018-10-01
+      </time>
+    
+</span>
+                <h1>数据结构-内排序</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>国庆放假，图书馆不开门，更新几篇文章。<br>先从数据结构的内排序说起(大纲要求的几种排序)。 <center><img src="http://osq79d99q.bkt.clouddn.com/%E7%AE%97%E6%B3%95.jpg " height="360" alt="常见算法复杂度" align="center"></center><br> <center><img src="http://osq79d99q.bkt.clouddn.com/%E6%8E%92%E5%BA%8F%E5%88%86%E7%B1%BB.png" height="360" alt="常见排序分类" align="center"></center> </p>
+<h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><p>直接插入排序的核心思想就是：将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过。<br>因此，从上面的描述中我们可以发现，直接插入排序可以用两个循环完成：</p>
+<p>第一层循环：遍历待比较的所有数组元素<br>第二层循环：将本轮选择的元素(selected)与已经排好序的元素(ordered)相比较。<br>如果：selected &gt; ordered，那么将二者交换<br>代码实现</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>def insert_sort(L):
+#遍历数组中的所有元素，其中0号索引元素默认已排序，因此从1开始
+for x in range(1,len(L)):
+#将该元素与已排序好的前序数组依次比较，如果该元素小，则交换
+#range(x-1,-1,-1):从x-1倒序循环到0
+    for i in range(x-1,-1,-1):
+#判断：如果符合条件则交换
+        if L[i] &gt; L[i+1]:
+            temp = L[i+1]
+            L[i+1] = L[i]
+            L[i] = temp
+</code></pre><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>希尔排序的算法思想：将待排序数组按照步长gap进行分组，然后将每组的元素利用直接插入排序的方法进行排序；每次将gap折半减小，循环上述操作；当gap=1时，利用直接插入，完成排序。<br>同样的：从上面的描述中我们可以发现：希尔排序的总体实现应该由三个循环完成：</p>
+<p>第一层循环：将gap依次折半，对序列进行分组，直到gap=1<br>第二、三层循环：也即直接插入排序所需要的两次循环。具体描述见上。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre><code>def insert_shell(L):
+#初始化gap值，此处利用序列长度的一般为其赋值
+gap = (int)(len(L)/2)
+#第一层循环：依次改变gap值对列表进行分组
+while (gap &gt;= 1):
+#下面：利用直接插入排序的思想对分组数据进行排序
+#range(gap,len(L)):从gap开始
+    for x in range(gap,len(L)):
+#range(x-gap,-1,-gap):从x-gap开始与选定元素开始倒序比较，每个比较元素之间间隔gap
+        for i in range(x-gap,-1,-gap):
+#如果该组当中两个元素满足交换条件，则进行交换
+            if L[i] &gt; L[i+gap]:
+                temp = L[i+gap]
+                L[i+gap] = L[i]
+                L[i] =temp
+#while循环条件折半
+    gap = (int)(gap/2)
+</code></pre><h3 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h3><p>简单选择排序的基本思想：比较+交换。<br>从待排序序列中，找到关键字最小的元素；<br>如果最小元素不是待排序序列的第一个元素，将其和第一个元素互换；<br>从余下的 N - 1 个元素中，找出关键字最小的元素，重复(1)、(2)步，直到排序结束。<br>因此我们可以发现，简单选择排序也是通过两层循环实现。<br>第一层循环：依次遍历序列当中的每一个元素<br>第二层循环：将遍历得到的当前元素依次与余下的元素进行比较，符合最小元素的条件，则交换。</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre><code>def select_sort(L):
+依次遍历序列中的每一个元素
+for x in range(0,len(L)):
+将当前位置的元素定义此轮循环当中的最小值
+    minimum = L[x]
+将该元素与剩下的元素依次比较寻找最小元素
+    for i in range(x+1,len(L)):
+        if L[i] &lt; minimum:
+            temp = L[i];
+            L[i] = minimum;
+            minimum = temp
+将比较后得到的真正的最小值赋值给当前位置
+    L[x] = minimum
+</code></pre><h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>堆的概念<br>堆：本质是一种数组对象。特别重要的一点性质：<b>任意的叶子节点小于（或大于）它所有的父节点</b>。对此，又分为大顶堆和小顶堆，大顶堆要求节点的元素都要大于其孩子，小顶堆要求节点元素都小于其左右孩子，两者对左右孩子的大小关系不做任何要求。<br>利用堆排序，就是基于大顶堆或者小顶堆的一种排序方法。下面，我们通过大顶堆来实现。</p>
+<p>基本思想：<br>堆排序可以按照以下步骤来完成：</p>
+<p>首先将序列构建称为大顶堆；<br>（这样满足了大顶堆那条性质：位于根节点的元素一定是当前序列的最大值）</p>
+<p>取出当前大顶堆的根节点，将其与序列末尾元素进行交换；<br>（此时：序列末尾的元素为已排序的最大值；由于交换了元素，当前位于根节点的堆并不一定满足大顶堆的性质）<br>对交换后的n-1个序列元素进行调整，使其满足大顶堆的性质；     </p>
+<h4 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h4><pre><code>def LEFT(i):
+return 2*i + 1
+def RIGHT(i):
+return 2*i + 2
+L:待调整序列 length: 序列长度 i:需要调整的结点
+def adjust_max_heap(L,length,i):
+定义一个int值保存当前序列最大值的下标
+largest = i
+执行循环操作：两个任务：1 寻找最大值的下标；2.最大值与父节点交换
+while (1):
+获得序列左右叶子节点的下标
+    left,right = LEFT(i),RIGHT(i)
+当左叶子节点的下标小于序列长度 并且 左叶子节点的值大于父节点时，将左叶子节点的    下标赋值给largest
+    if (left &lt; length) and (L[left] &gt; L[i]):
+        largest = left
+        print(&apos;左叶子节点&apos;)
+    else:
+        largest = i
+当右叶子节点的下标小于序列长度 并且 右叶子节点的值大于父节点时，将右叶子节点       的下标值赋值给largest
+    if (right &lt; length) and (L[right] &gt; L[largest]):
+        largest = right
+        print(&apos;右叶子节点&apos;)
+如果largest不等于i 说明当前的父节点不是最大值，需要交换值
+    if (largest != i):
+        temp = L[i]
+        L[i] = L[largest]
+        L[largest] = temp
+        i = largest
+        print(largest)
+        continue
+    else:
+        break
+建立大顶堆 
+def build_max_heap(L):
+length = len(L)
+for x in range((int)((length-1)/2),-1,-1):
+    adjust_max_heap(L,length,x)
+def heap_sort(L):
+先建立大顶堆，保证最大值位于根节点；并且父节点的值大于叶子结点
+build_max_heap(L)
+i：当前堆中序列的长度.初始化为序列的长度
+i = len(L)
+执行循环：1. 每次取出堆顶元素置于序列的最后(len-1,len-2,len-3...)
+     2. 调整堆，使其继续满足大顶堆的性质，注意实时修改堆中序列的长度
+while (i &gt; 0):
+    temp = L[i-1]
+    L[i-1] = L[0]
+    L[0] = temp
+堆中序列长度减1
+    i = i-1
+调整大顶堆
+    adjust_max_heap(L,i,0)    
+</code></pre><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>冒泡排序是最简单的一种排序。<br>冒泡排序思路比较简单：</p>
+<p>将序列当中的左右元素，依次比较，保证右边的元素始终大于左边的元素；<br>（ 第一轮结束后，序列最后一个元素一定是当前序列的最大值；）<br>对序列当中剩下的n-1个元素再次执行步骤1。<br>对于长度为n的序列，一共需要执行n-1轮比较<br>（利用while循环可以减少执行次数）</p>
+<h4 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h4><pre><code>def bubble_sort(L):
+length = len(L)
+序列长度为length，需要执行length-1轮交换
+for x in range(1,length):
+对于每一轮交换，都将序列当中的左右元素进行比较
+每轮交换当中，由于序列最后的元素一定是最大的，因此每轮循环到序列未排序的位置即    可
+    for i in range(0,length-x):
+        if L[i] &gt; L[i+1]:
+            temp = L[i]
+            L[i] = L[i+1]
+            L[i+1] = temp
+</code></pre><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>快速排序的基本思想：挖坑填数+分治法<br>从序列当中选择一个基准数(pivot)<br>在这里我们选择序列当中第一个数最为基准数<br>将序列当中的所有数依次遍历，比基准数大的位于其右侧，比基准数小的位于其左侧<br>重复步骤1.2，直到所有子集当中只有一个元素为止。<br>用伪代码描述如下：<br>1．i =L; j = R; 将基准数挖出形成第一个坑a[i]。<br>2．j–由后向前找比它小的数，找到后挖出此数填前一个坑a[i]中。<br>3．i++由前向后找比它大的数，找到后也挖出此数填到前一个坑a[j]中。<br>4．再重复执行2，3二步，直到i==j，将基准数填入a[i]中</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>L：待排序的序列；start排序的开始index,end序列末尾的index
+对于长度为length的序列：start = 0;end = length-1
+def quick_sort(L,start,end):
+if start &lt; end:
+    i , j , pivot = start , end , L[start]
+    while i &lt; j:
+从右开始向左寻找第一个小于pivot的值
+        while (i &lt; j) and (L[j] &gt;= pivot):
+            j = j-1
+将小于pivot的值移到左边
+        if (i &lt; j):
+            L[i] = L[j]
+            i = i+1 
+从左开始向右寻找第一个大于pivot的值
+        while (i &lt; j) and (L[i] &lt; pivot):
+            i = i+1
+将大于pivot的值移到右边
+        if (i &lt; j):
+            L[j] = L[i]
+            j = j-1
+循环结束后，说明 i=j，此时左边的值全都小于pivot,右边的值全都大于pivot
+pivot的位置移动正确，那么此时只需对左右两侧的序列调用此函数进一步排序即可
+递归调用函数：依次对左侧序列：从0 ~ i-1//右侧序列：从i+1 ~ end
+    L[i] = pivot
+左侧序列继续排序
+    quick_sort(L,start,i-1)
+右侧序列继续排序
+    quick_sort(L,i+1,end)
+</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/10/02/数据结构-绪论/" style="float: left;">
+        ← 数据结构-绪论
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/10/01/移动互联网十年/">
+        移动互联网十年 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By 幕天. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
