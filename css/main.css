@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #546634;
+  background: #040555;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2720,7 +2720,7 @@ hr {
 }
 @media (max-width: 767px) {
   .menu .menu-item a {
-    text-align: center;
+    text-align: left;
   }
 }
 .menu .menu-item a:hover {
