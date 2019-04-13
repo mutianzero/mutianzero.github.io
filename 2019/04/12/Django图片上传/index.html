@@ -84,7 +84,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="最近用Django开发一个房产租售信息管理系统，其中需要用到图片上传功能，考虑了两种方案：一种是上传到本地服务器，还有就是上传到七牛云，各有优缺点，上传到本地，会占用本地服务器空间，而选择后者的话则会受网速等的限制，而且七牛云的测试域名有效期只有一个月，故选择了前者。刚开始也踩了不少的坑，在上传的过程中，一直提示找不到对应的路径，在settings和views里找了很久的错都没有找到原因，后来在d">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-12T16:05:46.371Z">
+<meta property="og:updated_time" content="2019-04-13T14:07:06.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django图片上传">
 <meta name="twitter:description" content="最近用Django开发一个房产租售信息管理系统，其中需要用到图片上传功能，考虑了两种方案：一种是上传到本地服务器，还有就是上传到七牛云，各有优缺点，上传到本地，会占用本地服务器空间，而选择后者的话则会受网速等的限制，而且七牛云的测试域名有效期只有一个月，故选择了前者。刚开始也踩了不少的坑，在上传的过程中，一直提示找不到对应的路径，在settings和views里找了很久的错都没有找到原因，后来在d">
@@ -397,30 +397,41 @@
 
       
         <p>最近用Django开发一个房产租售信息管理系统，其中需要用到图片上传功能，考虑了两种方案：一种是上传到本地服务器，还有就是上传到七牛云，各有优缺点，上传到本地，会占用本地服务器空间，而选择后者的话则会受网速等的限制，而且七牛云的测试域名有效期只有一个月，故选择了前者。<br>刚开始也踩了不少的坑，在上传的过程中，一直提示找不到对应的路径，在settings和views里找了很久的错都没有找到原因，后来在debug中才发现，之前用七牛云测试的时候，就配置了一个MEDIA_ROOT=os.path.join(BASE_DIR,’static/img’),而且写在了views文件的末尾……直接导致了现在配的MEDIA_ROOT失效(现在配的位置在七牛云之前，Django应该是以最后的为准)，所以这个bug一时没有造出来，这都是自己种下的坑，以后开发过程中要吸取教训。</p>
-<p>下面是完整的图片/文件上传代码：       </p>
-<p>html部分</p>
-<div class="panel panel-default"><br>      <div class="panel-heading"><br><br>               </div><br>                <div class="panel-body"><br>                    <div id="regLogin" class="wrap"><br>                        <div class="dialog"><br>                            <div class="box"><br>                                <form action="/manager/pictureupload" method="post" enctype="multipart/form-data"><br>                                    <div class="infos"><br><br>                           <input type="file" name="picture" accept="image/*" id="picture"><br><br>                                            <button type="submit" style="margin-left: 360px" class="btn btn-success" value="upload">上传</button><br><br>                                    </div><br>                                </form><br>                            </div><br>                        </div><br>                    </div><br>                </div><br>        </div>
+<p>下面是完整的图片/文件上传代码：<br>html部分<br>‘’’</p>
+<p><div class="panel panel-default"><br>      <div class="panel-heading"><br>               </div><br>                <div class="panel-body"><br>                    <div id="regLogin" class="wrap"><br>                        <div class="dialog"><br>                            <div class="box"><br>                                <form action="/manager/pictureupload" method="post" enctype="multipart/form-data"><br>                                    <div class="infos"></div></form></div></div></div></div></div></p>
+<pre><code>                   &lt;input type=&quot;file&quot; name=&quot;picture&quot;  accept=&quot;image/*&quot; id=&quot;picture&quot;&gt;
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">  </span><br><span class="line">## views部分：</span><br></pre></td></tr></table></figure>
-<p>def manager_upload(request):<br>if request.method==’POST’:</p>
-<pre><code># 从请求当中　获取文件对象
-f1 = request.FILES.get(&apos;picture&apos;)
-adddate = timezone.now()
-img_url = &quot;/Users/zlinzhang/PycharmProjects/my_site/House/static/img/&quot; + f1.name
+                     &lt;button type=&quot;submit&quot; style=&quot;margin-left: 360px&quot; class=&quot;btn btn-success&quot; value=&quot;upload&quot;&gt;上传&lt;/button&gt;
+
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+&lt;/div&gt;     
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">            </span><br><span class="line">  </span><br><span class="line">## views部分：</span><br></pre></td></tr></table></figure>
+<pre><code>def manager_upload(request):
+if request.method==&apos;POST&apos;:
+    # 从请求当中　获取文件对象
+    f1 = request.FILES.get(&apos;picture&apos;)
+    adddate = timezone.now()
+    img_url = &quot;/Users/zlinzhang/PycharmProjects/my_site/House/static/img/&quot; + f1.name
 fname = settings.MEDIA_ROOT + &quot;/img/&quot; + f1.name
 p = Img(img_url=img_url, name=f1.name, adddate=adddate)
 p.save()
-# 在之前配好的静态文件目录static/img/ 下新建一个空文件
-# 循环把上传的图片写入到新建文件当中
+在之前配好的静态文件目录static/img/ 下新建一个空文件
+循环把上传的图片写入到新建文件当中
 
 with open(fname, &apos;wb&apos;) as img:
     for c in f1.chunks():     #chunks 若文件太大，则分块上传
         img.write(c)
 return HttpResponse(&quot;上传成功&quot;)
-</code></pre><p>return render(request,’manager_pictureupload.html’)<br>    <code>`</code></p>
-<h2 id="settins部分"><a href="#settins部分" class="headerlink" title="settins部分"></a>settins部分</h2><p>STATIC_URL = ‘/static/‘</p>
+return render(request,&apos;manager_pictureupload.html&apos;)
+</code></pre><p><code>`</code></p>
+<h2 id="settins部分"><a href="#settins部分" class="headerlink" title="settins部分"></a>settins部分</h2><p>‘’’<br>STATIC_URL = ‘/static/‘</p>
 <p>STATICFILES_DIRS = (<br>    os.path.join(BASE_DIR, ‘static’),<br>)</p>
-<p>MEDIA_ROOT = os.path.join(BASE_DIR,’House/static’)</p>
+<p>MEDIA_ROOT = os.path.join(BASE_DIR,’House/static’)<br>‘’’</p>
 
       
     </div>
@@ -639,7 +650,7 @@ return HttpResponse(&quot;上传成功&quot;)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">共81.9k字</span>
+  <span class="post-count">共82k字</span>
 </div>
 
 
