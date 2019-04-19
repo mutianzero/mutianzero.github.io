@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[”Django-数据统计“]]></title>
-    <url>%2F2019%2F04%2F18%2F%E2%80%9DDjango-%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E2%80%9C%2F</url>
+    <title><![CDATA[Django-数据查询条件]]></title>
+    <url>%2F2019%2F04%2F19%2FDjango-%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[今天在测试房源出租列表和出售列表的搜索功能时，发现，当输入为None，时，本来是显示全部未成交和已成交状态的房源的，但是回收站的房源也显示了出来，一查看后台views代码，才发现搜索过滤语句有问题，没有对回收站状态的房源信息进行筛选，于是改写语句。先想着用： househire = Househire.objects.filter((Q(housename__contains=keyword)|Q(mj__contains=keyword)|Q(fendian__contains=keyword)) &amp; (Q(status_word=’已成交’) or Q(status_word=’未成交’))).order_by(‘-id’,)但是经过测试不行。百度得知可以这样去写：househire = Househire.objects.filter((Q(housename__contains=keyword)|Q(mj__contains=keyword)|Q(fendian__contains=keyword)) &amp; ~ Q(status_word=’回收站’)).order_by(‘-id’,)测试成功。又学到了一种方法，技巧还是挺多的，还是得多学。之前还用过：.exclude(status_word=’回收站’)]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Django-数据统计]]></title>
+    <url>%2F2019%2F04%2F18%2FDjango-%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%2F</url>
     <content type="text"><![CDATA[毕业设计项目接近完成，因为是信息类管理系统，涉及到大量的数据展示和管理，一般来说数据展示是用表格来完成的，但是用表格展示，数据不是很直观，要想一眼就看书数据之间的关系和特点，更好的方式当然是画图来展示了。我这里选择了柱状图。使用了百度开源的echarts包。在使用前先引入：echarts.js文件。前台展示：代码： &lt;script type=&quot;text/javascript&quot;&gt; var myChart = echarts.init(document.getElementById(&apos;main&apos;)); var myChart1 = echarts.init(document.getElementById(&apos;main1&apos;)); $.ajax({ type: &quot;get&quot;, url: &quot;/manager/manager_echarthire&quot;, dataType: &quot;json&quot;, success: function (data) { // 指定图表的配置项和数据 var option = { title: { left: &apos;center&apos;, text: &apos;出租数据&apos; }, tooltip: {}, xAxis: { data: data.key, }, yAxis: {}, series: [{ name: &apos;数量&apos;, type: &apos;bar&apos;, data: data.value, color: &apos;#98F5FF&apos; }] }; // 使用刚指定的配置项和数据显示图表。 myChart1.setOption(option); }, error: function () { alert(&apos;Error: ajax 请求出错！&apos;) } }); $.ajax({ type: &quot;get&quot;, url: &quot;/manager/manager_echartsale&quot;, dataType: &quot;json&quot;, success: function (data) { // 指定图表的配置项和数据 var option = { title: { left: &apos;center&apos;, text: &apos;出售数据&apos; }, tooltip: {}, xAxis: { data: data.key }, yAxis: {}, series: [{ name: &apos;数量&apos;, type: &apos;bar&apos;, data: data.value, color: &apos;#98F5FF&apos; }] }; // 使用刚指定的配置项和数据显示图表。 myChart.setOption(option); }, error: function () { alert(&apos;Error: ajax 请求出错！&apos;) } }); &lt;/script&gt; 后台views代码： def echarts_qiandao(request): #签到数据 hire = Qiandao.objects.values_list(&apos;realname&apos;).annotate(Count(&apos;id&apos;)).order_by(&apos;-id__count&apos;)[:20] jsondata = { &quot;key&quot;: [i[0] for i in hire], &quot;value&quot;: [i[1] for i in hire] } return JsonResponse(jsondata) 前台展示效果： 数据统计]]></content>
   </entry>
   <entry>
