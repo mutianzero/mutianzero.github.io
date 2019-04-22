@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2019%2F04%2F22%2F%E9%9A%8F%E7%AC%94-1%2F</url>
+    <content type="text"><![CDATA[其实有时候我也在想，为什么总是事与愿违，为什么总是得不到自己想要的那个结果，为什么总是在完美中留下一点瑕疵，为什么有时候努力了还不及一个未曾努力的。归根到底还是自己不够强，坏毛病太多，思想太乱，应该戒掉的坏习惯还有太多，自律带来自强，高度自律带来高度自由，未来的十年，就看今日种下的因了。—做个不苟言笑的强者。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Django-数据查询条件]]></title>
     <url>%2F2019%2F04%2F19%2FDjango-%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[今天在测试房源出租列表和出售列表的搜索功能时，发现，当输入为None，时，本来是显示全部未成交和已成交状态的房源的，但是回收站的房源也显示了出来，一查看后台views代码，才发现搜索过滤语句有问题，没有对回收站状态的房源信息进行筛选，于是改写语句。先想着用： househire = Househire.objects.filter((Q(housename__contains=keyword)|Q(mj__contains=keyword)|Q(fendian__contains=keyword)) &amp; (Q(status_word=’已成交’) or Q(status_word=’未成交’))).order_by(‘-id’,)但是经过测试不行。百度得知可以这样去写：househire = Househire.objects.filter((Q(housename__contains=keyword)|Q(mj__contains=keyword)|Q(fendian__contains=keyword)) &amp; ~ Q(status_word=’回收站’)).order_by(‘-id’,)测试成功。又学到了一种方法，技巧还是挺多的，还是得多学。之前还用过：.exclude(status_word=’回收站’)]]></content>
