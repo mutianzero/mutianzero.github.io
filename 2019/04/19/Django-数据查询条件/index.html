@@ -84,7 +84,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="今天在测试房源出租列表和出售列表的搜索功能时，发现，当输入为None，时，本来是显示全部未成交和已成交状态的房源的，但是回收站的房源也显示了出来，一查看后台views代码，才发现搜索过滤语句有问题，没有对回收站状态的房源信息进行筛选，于是改写语句。先想着用：    househire = Househire.objects.filter((Q(housename__contains=keyword">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-19T09:39:10.661Z">
+<meta property="og:updated_time" content="2019-04-28T01:14:17.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django-数据查询条件">
 <meta name="twitter:description" content="今天在测试房源出租列表和出售列表的搜索功能时，发现，当输入为None，时，本来是显示全部未成交和已成交状态的房源的，但是回收站的房源也显示了出来，一查看后台views代码，才发现搜索过滤语句有问题，没有对回收站状态的房源信息进行筛选，于是改写语句。先想着用：    househire = Househire.objects.filter((Q(housename__contains=keyword">
@@ -359,6 +359,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -515,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
