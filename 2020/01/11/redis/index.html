@@ -73,17 +73,17 @@
 
 
 
-<meta name="description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。 redis过期时间expire">
+<meta name="description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。     redis一个实例就是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis">
 <meta property="og:url" content="http://limingfan.cn/2020/01/11/redis/index.html">
 <meta property="og:site_name" content="zl&amp;mf的小屋">
-<meta property="og:description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。 redis过期时间expire">
+<meta property="og:description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。     redis一个实例就是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-31T16:47:03.235Z">
+<meta property="og:updated_time" content="2020-02-23T04:08:36.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
-<meta name="twitter:description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。 redis过期时间expire">
+<meta name="twitter:description" content="在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。事务的是个特性：原子性、不可分割性、隔离性、持久性。     redis一个实例就是">
 
 
 
@@ -402,7 +402,9 @@
       
 
       
-        <p>在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。<br>原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。<br>事务的是个特性：原子性、不可分割性、隔离性、持久性。</p>
+        <p>在redis的使用中，处理简单的并发用的比较多的就是incrby了，这是一个原子操作，很实用，当存在多个人竞争同一个资源时，每个人进来就incrby一次，只有当incrby == Number,指定值时才会取得资源。很简单但是很有效。<br>原子操作：对于一个操作，要么全部执行，要么全部不执行，不会出现执行了一部分的情况。<br>事务的是个特性：原子性、不可分割性、隔离性、持久性。    </p>
+<p>redis一个实例就是一个节点，每个节点分配一个端口号，每个节点对应一个redis.conf配置文件。默认配置的端口号是6379，假设现在需要多配置一个实例，端口为6380，可以直接复制redis.conf命名为redis6380.conf，并且编辑配置文件修改一下几个参数：<br>pidfile //run/redis/redis6380-~//log/redis/redis6380-~</p>
+<p>保存之后直接启动这个配置文件即可。<br>redis-server /etc/redis/redis6380.conf</p>
 <p>redis过期时间<br>expire设置 ttl查看 ttl keyname<br>针对字符串独有的过期时间设置方式<br>setex(String key, int seconds, String value)</p>
 <p>过期删除原理：<br>1、消极方法（惰性删除）：在主键被访问的时候如果发现已经失效，就删除。<br>优缺点：对CPU时间友好，程序会在取出键的时候才会对键进行过期检查，这不会在删除其他无关过期键上花费任何CPU时间，但是如果一个键已经过期，而这个键又保存在数据库中，那么只要这个过期键不被删除，其所占用的内存就不会被释放，对内存不友好。<br>2、积极方法：<br>定时删除：在设置键的过期时间的同时，创建一个timer，让定时器在键的过期时间达到时，立即执行对键的删除操作（主动删除）。<br>优缺点：对内存友好，但是对CPU时间不友好，在较多过期键的情况下。删除过期键会占用相当一部分CPU时间。<br>定期删除：每隔一段时间就对数据库进行一次检查，删除里面的过期键（主动删除）<br>优缺点：采用对内存和cpu时间折中的方法，每个一段时间执行一次删除过期键操作，并通过限制操作执行的时长和频率来减少对cpu时间的影响。难点在于，选择一个好的策略来设置删除操作的时长和执行频率</p>
 <p>redis从节点过期key的删除策略<br>主节点在Key到期时，会在AOF文件中增加一条del指令。AOF文件被同步到从节点以后，从节点根据AOF的这个del指令，来执行删除过期key的操作。</p>
@@ -658,7 +660,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">共89.3k字</span>
+  <span class="post-count">共89.4k字</span>
 </div>
 
 
