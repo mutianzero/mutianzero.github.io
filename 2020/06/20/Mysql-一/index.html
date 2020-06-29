@@ -73,17 +73,17 @@
 
 
 
-<meta name="description" content="查看表结构show columns from tabelname; ==  desc table; 查看建表语句show create table tablename; 执行速度：drop &amp;gt; ttuncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除数据保留表结构     truncate">
+<meta name="description" content="查看表结构show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。 查看建表语句show create table tablename; 执行速度：drop &amp;gt; truncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql(一)">
 <meta property="og:url" content="http://limingfan.cn/2020/06/20/Mysql-一/index.html">
 <meta property="og:site_name" content="zl&amp;mf的小屋">
-<meta property="og:description" content="查看表结构show columns from tabelname; ==  desc table; 查看建表语句show create table tablename; 执行速度：drop &amp;gt; ttuncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除数据保留表结构     truncate">
+<meta property="og:description" content="查看表结构show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。 查看建表语句show create table tablename; 执行速度：drop &amp;gt; truncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-21T14:52:31.123Z">
+<meta property="og:updated_time" content="2020-06-29T09:38:22.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql(一)">
-<meta name="twitter:description" content="查看表结构show columns from tabelname; ==  desc table; 查看建表语句show create table tablename; 执行速度：drop &amp;gt; ttuncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除数据保留表结构     truncate">
+<meta name="twitter:description" content="查看表结构show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。 查看建表语句show create table tablename; 执行速度：drop &amp;gt; truncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除">
 
 
 
@@ -424,10 +424,10 @@
       
 
       
-        <p>查看表结构<br>show columns from tabelname; ==  desc table;</p>
+        <p>查看表结构<br>show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。</p>
 <p>查看建表语句<br>show create table tablename;</p>
-<p>执行速度：<br>drop &gt; ttuncate &gt; delete;<br>drop直接删除表和数据               drop table tablename;<br>truncate删除数据保留表结构     truncate table tablename;<br>delete删除具体的数据            delete from tablename where [];</p>
-<p>linux vim<br>搜索： / + keywords<br>显示行数   :set nu    或者修改配置文件  vim ~/.vimrc 打开后是一个空文件，添加 set nu 保存退出再次进入vim即可永久显示。<br>跳转到某行： : + number</p>
+<p>执行速度：<br>drop &gt; truncate &gt; delete;<br>drop直接删除表和数据               drop table tablename;<br>truncate删除数据保留表结构     truncate table tablename;<br>delete删除具体的数据            delete from tablename where [];</p>
+<p>linux vim<br>搜索： / + keywords<br>显示行数   :set nu    或者修改配置文件  vim ~/.vimrc 打开后是一个空文件，添加 set nu 保存退出再次进入vim即可永久显示。<br>隐藏行数     :set nonu<br>跳转到某行： : + number</p>
 <p>redis主从同步机制：主从刚连接时，进行全量同步；全量同步结束后，进行增量同步。当然，如果有需要，slave在任何时候都可以发起全量同步。redis策略是，无论如何，首先会尝试进行增量同步，如果不成功，要求从机进行全量同步。</p>
 <p>notice:<br>如果多个slave断线，需要重启的时候，因为只要salve启动，就会发送sync请求和主机全量同步，当多个同时出现的时候，可能会导致Master IO剧增宕机。</p>
 <p>super.代表的是当前子类对象中的父类对象特征，并不是一个引用<br>super()代表给当前子类对象中的父类型特征赋值<br>构造方法被调用，不一定会创建一个对象<br>java中只要创建对象，object中的无参构造方法一定会执行</p>
@@ -692,7 +692,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">共95.3k字</span>
+  <span class="post-count">共95.4k字</span>
 </div>
 
 
