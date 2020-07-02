@@ -80,7 +80,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="查看表结构show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。 查看建表语句show create table tablename; 执行速度：drop &amp;gt; truncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-29T09:47:50.135Z">
+<meta property="og:updated_time" content="2020-07-02T06:04:53.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql(一)">
 <meta name="twitter:description" content="查看表结构show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。 查看建表语句show create table tablename; 执行速度：drop &amp;gt; truncate &amp;gt; delete;drop直接删除表和数据               drop table tablename;truncate删除">
@@ -427,6 +427,7 @@
         <p>查看表结构<br>show columns from tabelname; 和 desc tablename; 的显示效果一样，但是含义是不一样的。</p>
 <p>查看建表语句<br>show create table tablename;</p>
 <p>执行速度：<br>drop &gt; truncate &gt; delete;<br>drop直接删除表和数据               drop table tablename;<br>truncate删除数据保留表结构     truncate table tablename;<br>delete删除具体的数据            delete from tablename where [];</p>
+<p>delete和truncate的区别<br>1.delete 可以跟筛选条件,而truncate 只能删除表中的所有记录。<br>2.truncate语句，删除表中的数据后，向表中添加记录时，自动增加字段的默认初始值重新从1开始，而使用delete语句，删除表中所有记录后，向表中添加记录时，在原来的基础上递增，为删除时该字段的最大值加1。<br>3、delete语句，每删除一条记录，都会在日志中记录，而使用truncate语句，不会在日志中记录删除的内容，因此，truncate语句的执行效率比delete语句高<br>4、truncate是先删除再创建，delete是逐条删除；truncate不知道删除了多少条，delete知道。</p>
 <p>linux vim<br>搜索： / + keywords<br>显示行数   :set nu    或者修改配置文件  vim ~/.vimrc 打开后是一个空文件，添加 set nu 保存退出再次进入vim即可永久显示。<br>隐藏行数     :set nonu<br>跳转到某行： : + number</p>
 <p>redis主从同步机制：主从刚连接时，进行全量同步；全量同步结束后，进行增量同步。当然，如果有需要，slave在任何时候都可以发起全量同步。redis策略是，无论如何，首先会尝试进行增量同步，如果不成功，要求从机进行全量同步。</p>
 <p>notice:<br>如果多个slave断线，需要重启的时候，因为只要salve启动，就会发送sync请求和主机全量同步，当多个同时出现的时候，可能会导致Master IO剧增宕机。</p>
@@ -471,7 +472,7 @@
 <p>查看事务隔离级别：<br>select @@global.tx_isolation;</p>
 <h3 id="索引："><a href="#索引：" class="headerlink" title="索引："></a>索引：</h3><p>在数据库方面，查询一张表的时候有两种检索方式：<br>    第一种：全表扫描<br>    第二种：根据索引检索</p>
 <p>原理：缩小了扫描的范围</p>
-<p>索引虽然可以提高检索效率，但是不能随意的添加索引。因为索引也是数据库中的对象。也需要数据库不短了的维护。是有维护的成本的。比如：<br>表中的数据经常被修改，就不适合添加索引，因为数据一旦修改，索引需要重新排序，进行维护。</p>
+<p>索引虽然可以提高检索效率，但是不能随意的添加索引。因为索引也是数据库中的对象。也需要数据库不断的维护。是有维护成本的。比如：<br>表中的数据经常被修改，就不适合添加索引，因为数据一旦修改，索引需要重新排序，进行维护。</p>
 <p>添加索引是给某一个字段，或者说某些字段添加索引。</p>
 <p>如查询语句：<br>select ename, sal from emp where ename = ‘SMITH’;<br>当ename字段没有添加索引的时候，以上sql语句会进行全表扫描，扫描ename字段中所有的值。<br>当ename字段上添加索引的时候，以上sql语句会根据索引扫描，快速定位。</p>
 <p>什么时候考虑给字段添加索引（满足什么条件）</p>
@@ -530,6 +531,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/02/Mysql(二)-索引/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -715,7 +720,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">共95.4k字</span>
+  <span class="post-count">共96.8k字</span>
 </div>
 
 
