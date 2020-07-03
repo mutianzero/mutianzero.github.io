@@ -73,13 +73,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="zl&amp;mf的小屋">
-<meta property="og:url" content="http://limingfan.cn/archives/2020/02/index.html">
+<meta name="description" content="Redis集群方案 Redis Cluster为什么是16384个哈希槽5redis cluster没有使用一致性hash，而是引入了哈希槽的概念。clustere共有16384（214）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。这种结构很容易添加或删除节点，并且无论是添加删除或者修改某一个节点，都不会造成集群不可用的状态。HA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis集群方案">
+<meta property="og:url" content="http://limingfan.cn/2020/07/02/redis集群方案/index.html">
 <meta property="og:site_name" content="zl&amp;mf的小屋">
+<meta property="og:description" content="Redis集群方案 Redis Cluster为什么是16384个哈希槽5redis cluster没有使用一致性hash，而是引入了哈希槽的概念。clustere共有16384（214）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。这种结构很容易添加或删除节点，并且无论是添加删除或者修改某一个节点，都不会造成集群不可用的状态。HA">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-07-03T03:27:31.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zl&amp;mf的小屋">
+<meta name="twitter:title" content="Redis集群方案">
+<meta name="twitter:description" content="Redis集群方案 Redis Cluster为什么是16384个哈希槽5redis cluster没有使用一致性hash，而是引入了哈希槽的概念。clustere共有16384（214）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。这种结构很容易添加或删除节点，并且无论是添加删除或者修改某一个节点，都不会造成集群不可用的状态。HA">
 
 
 
@@ -109,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="http://limingfan.cn/archives/2020/02/">
+  <link rel="canonical" href="http://limingfan.cn/2020/07/02/redis集群方案/">
 
 
 
@@ -132,7 +136,7 @@
     })();
 </script>
 
-  <title>归档 | zl&mf的小屋</title>
+  <title>Redis集群方案 | zl&mf的小屋</title>
   
 
 
@@ -161,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -307,71 +311,199 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-         
-          
-        好! 目前共计 68 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2020">2020</h2>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://limingfan.cn/2020/07/02/redis集群方案/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zl love mf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zl&mf的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/02/02/2020/" itemprop="url">
-              
-                <span itemprop="name">2020</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Redis集群方案</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-02T14:02:02+08:00" content="2020-02-02">
-          02-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-02T00:38:59+08:00">
+                2020-07-02
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/02/redis集群方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/02/redis集群方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>Redis集群方案</p>
+<h3 id="Redis-Cluster为什么是16384个哈希槽"><a href="#Redis-Cluster为什么是16384个哈希槽" class="headerlink" title="Redis Cluster为什么是16384个哈希槽"></a>Redis Cluster为什么是16384个哈希槽</h3><p>5<br>redis cluster没有使用一致性hash，而是引入了哈希槽的概念。<br>clustere共有16384（2<strong>14）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。<br>这种结构很容易添加或删除节点，并且无论是添加删除或者修改某一个节点，都不会造成集群不可用的状态。<br>HASH_SLOT = CRC16(客户端key) mod 16384<br>在redis节点发送心跳包时需要把所有的槽放在这个心跳包里，以便让节点知道当前集群信息，16386 = 16k, 在发送心跳包时使用char进行<br>bitmap压缩后是2k[2<em>8(8bit) </em> 1024(1k)] = 2k, 也就是说使用2k的空间创建了16k的槽。<br>65535 = 2</strong>16 = 64k,压缩后就是8k [8 <em> 8(bit) </em> 1024(1k)] = 8k，也就是说需要8k的心跳包。</p>
+<p>Redis Cluster原理<br>1、节点之间进行握手meet, 知道彼此的存在<br>2、握手成功后，两个节点会定期发送ping/pong 消息，交换数据信息（消息头、消息体）<br>3、消息体会携带一定数量的其他节点的信息，大约占集群节点总数量的十分之一，至少是3个节点的信息。节点数量越多，消息体内容越大。<br>4、每秒都在发送ping消息。每秒随机选择5个节点，找出最久没有通信的节点发送ping消息。<br>5、每100毫秒都会扫描本地节点列表，如果发现节点最近一次接受ping消息的时间大于cluster-node-timeout/2，则立即发送ping消息。</p>
+<p>redis集群的主节点数量基本不可能超过1000个，否则可能会造成网络拥塞。</p>
+<p>16384是平均分给节点进行管理的，每个节点只能对自己负责的槽进行读写操作。<br>由于每个节点之间都彼此通信，每个节点都知道另外节点负责管理的槽范围。</p>
+<p>客户端访问任意节点时，对数据key按照CRC16规则进行hash运算，然后将运算结果对16384取模，如果余数在当前访问的节点管理的槽范围内，则直接返回对应的数据。<br>如果不在当前节点负责管理的槽范围内，则会告诉客户端去哪个节点获取数据，由客户端去正确的节点获取数据。</p>
+<p>客户端路由<br>1、每个节点通过通信都会共享redis Cluster 中槽和集群对应节点的关系<br>2、客户端向redis-cluster的任意节点发送命令，接收命令的节点会根据CRC16规则进行hash运算并对16384取余，计算自己的槽和对应节点。<br>3、如果保存数据的槽被分配在当前节点，则去槽中执行命令，并把命令执行结果返回给客户端。<br>4、如果抱书数据的槽不在当前节点的管理范围内，则向客户端返回moved重定向异常。<br>5、客户端接收到节点返回的结果，如果是moved异常，则从moved异常中获取目标节点的信息。<br>6、客户端向目标节点发送命令，获取命令执行结果。</p>
+<p>Notice: 客户端不会自动找到目标节点执行命令</p>
+<p>如果槽命中，直接返回<br>在对集群进行扩容和缩容时，需要对槽2及槽中数据进行迁移<br>当客户端向某个结点发送命令，结点向客户端返回MOVED异常，告诉客户端数据对应的槽的节点信息<br>如果此时正在进行集群扩容或者缩容操作，当客户端向正确的节点发送命令时，槽及槽中数据已经被迁移到别的节点了，就会<br>返回ask，这就是ask重定向机制。</p>
+<p>步骤：<br>1、客户端向目标节点发送命令，目标节点的槽已经迁移到别的节点上了，此时目标节点会返回ask转向给客户端<br>2、客户端向新的节点发送Asking命令给新的节点，然后再次向新节点发送命令<br>3、新节点执行命令，把命令执行结果返回给客户端</p>
+<p>moved异常和Ask异常的相同点和不同点<br>1、两者都是客户端重定向<br>2、moved异常：槽已经确定迁移，即槽已经不在当前节点<br>3、ask异常：槽还在迁移中</p>
+<h3 id="故障发现"><a href="#故障发现" class="headerlink" title="故障发现"></a>故障发现</h3><p>Redis cluster通过ping/pong 消息实现故障发现，不需要sentinel<br>ping/pong不仅能传递节点与槽的对应信息，也能传递其他状态，比如节点主从状态，节点故障等<br>故障发现就是通过这种模式来实现，分为主观下线和客观下线。</p>
+<p>1.1、主观下线<br>1、节点1定期发送ping消息给节点2<br>2、如果发送成功，代表节点2正常运行，节点2会响应pong消息给节点1，节点1更新与节点2的最后通信时间<br>3、如果发送失败，则节点1与节点2之间的通信异常判断连接，在下一个定时任务周期时，仍然会与节点2发送ping消息<br>4、如果节点1发现与节点2最后通信时间超过node-timeout，则把节点2标识为pfail状态</p>
+<p>1.2、客观下线<br>当半数以上持有槽的主节点都标记某节点主观下线时，可以保证判断的公平性。<br>集群模式下，只有主节点（master）才有读写权限和集群槽的维护权限，从节点（slave）只有复制的权限</p>
+<p>1.某个节点接收到其他节点发送的ping消息，如果接收到的ping消息中包含了其他pfail节点，这个节点会将主观下线的消息内容添加到自身的故障列表中，故障列表中包含了当前节点接收到的每一个节点对其他节点的状态信息<br>2.当前节点把主观下线的消息内容添加到自身的故障列表之后，会尝试对故障节点进行客观下线操作</p>
+<p>cluster缺点：<br>当节点数量很多时，性能不会很高<br>解决方式：使用智能客户端，智能客户端知道哪个节点负责管理哪个槽，而且当节点与槽的映射关系发生改变时，客户端也会知道这个改变，这是一种很高效的方式。</p>
+<h3 id="集群完整性"><a href="#集群完整性" class="headerlink" title="集群完整性"></a>集群完整性</h3><p>cluster-require-full-coverage默认为yes，即是否集群中的所有节点都是在线状态且16384个槽都处于服务状态时，集群才会提供服务<br>集群中16384个槽全部处于服务状态，保证集群完整性<br>当某个节点故障或者正在故障转移时获取数据会提示：(error)CLUSTERDOWN The cluster is down<br>建议把cluster-require-full-coverage设置为no</p>
+<p>带宽消耗<br>Redis Cluster节点之间会定期交换Gossip消息，以及做一些心跳检测</p>
+<p>官方建议Redis Cluster节点数量不要超过1000个,当集群中节点数量过多时，会产生不容忽视的带宽消耗<br>消息发送频率：节点发现与其他节点最后通信时间超过cluster-node-timeout /2时，会直接发送PING消息<br>消息数据量：slots槽数组(2kb空间)和整个集群1/10的状态数据(10个节点状态数据约为1kb)<br>节点部署的机器规模：集群分布的机器越多且每台机器划分的节点数越均匀，则集群内整体的可用带宽越高</p>
+<p>带宽优化：<br>避免使用’大’集群：避免多业务使用一个集群，大业务可以多集群<br>cluster-node-timeout:带宽和故障转移速度的均衡<br>尽量均匀分配到多机器上：保证高可用和带宽</p>
+<p>集群做到读写分离<br>只读连接：集群模式下，从节点不接受任何读写请求<br>当向从节点执行读请求时，重定向到负责槽的主节点</p>
+<p>集群VS单机<br>key批量操作支持有限：例如 mget mset必须在一个slot<br>key事务和lua支持有限：操作的key必须在一个节点<br>不支持多个数据库，集群模式下只有一个db0<br>复制只支持一层：不支持树形复制结构<br>redis cluster满足容量和性能的扩展性，很多业务‘不需要’<br>大多数时客户端性能会‘降低’<br>命令无法跨节点使用：mget、keys、scan、flush、sinter等<br>Lua和事务无法跨节点使用<br>客户端维护更复杂：SDK和应用本身消耗（例如更多的连接池）</p>
+<p>总结<br>1.Redis Cluster数据分区规则采用虚拟槽方式(16384个槽)，每个节点负责一部分槽和相关数据，实现数据和请求的负载均衡<br>2.搭建Redis Cluster划分四个步骤：准备节点，meet操作，分配槽，复制数据。<br>3.Redis官方推荐使用redis-trib.rb工具快速搭建Redis Cluster<br>4.集群伸缩通过在节点之间移动槽和相关数据实现<br>    扩容时根据槽迁移计划把槽从源节点迁移到新节点<br>    收缩时如果下线的节点有负责的槽需要迁移到其他节点，再通过cluster forget命令让集群内所有节点忘记被下线节点<br>5.使用smart客户端操作集群过到通信效率最大化，客户端内部负责计算维护键，槽以及节点的映射，用于快速定位到目标节点<br>6.集群自动故障转移过程分为故障发现和节点恢复。节点下线分为主观下线和客观下线，当超过半数节点认为故障节点为主观下线时，标记这个节点为客观下线状态。从节点负责对客观下线的主节点触发故障恢复流程，保证集群的可用性<br>7.开发运维常见问题包括：超大规模集群带席消耗，pub/sub广播问题，集群倾斜问题，单机和集群对比等</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/20/Mysql-一/" rel="next" title="Mysql(一)">
+                <i class="fa fa-chevron-left"></i> Mysql(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/03/Mysql(二)-索引/" rel="prev" title="Mysql(二)-索引">
+                Mysql(二)-索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -379,6 +511,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -399,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -469,6 +617,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-Cluster为什么是16384个哈希槽"><span class="nav-number">1.</span> <span class="nav-text">Redis Cluster为什么是16384个哈希槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#故障发现"><span class="nav-number">2.</span> <span class="nav-text">故障发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群完整性"><span class="nav-number">3.</span> <span class="nav-text">集群完整性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -645,6 +809,10 @@ siteTime()
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
