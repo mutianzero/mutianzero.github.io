@@ -80,7 +80,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="为什么要使用索引？通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。可以大大加快 数据的检索速度（大大减少的检索的数据量）, 这也是创建索引的最主要的原因。帮助服务器避免排序和临时表。将随机IO变为顺序IO可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。索引这么多优点，为什么不对表中的每一个列创建一个索引呢？当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-02T16:19:46.713Z">
+<meta property="og:updated_time" content="2020-07-03T02:13:29.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql(二)-索引">
 <meta name="twitter:description" content="为什么要使用索引？通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。可以大大加快 数据的检索速度（大大减少的检索的数据量）, 这也是创建索引的最主要的原因。帮助服务器避免排序和临时表。将随机IO变为顺序IO可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。索引这么多优点，为什么不对表中的每一个列创建一个索引呢？当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护">
@@ -431,8 +431,7 @@
 <p>在经常用在连接的列上，这 些列主要是一些外键，可以加快连接的速度；</p>
 <p>避免 where 子句中对宇段施加函数，这会造成无法命中索引。</p>
 <p>在使用InnoDB时使用与业务无关的自增主键作为主键，即使用逻辑主键，而不要使用业务主键。</p>
-<p>将打算加索引的列设置为 NOT NULL ，否则将导致引擎放弃使用索引而进行全表扫描。</p>
-<p>订正，来自issue758 。将某一列设置为default null，where 是可以走索引，另外索引列是否设置 null 是不影响性能的。 但是，还是不建议列上允许为空。最好限制not null，因为null需要更多的存储空间并且null值无法参与某些运算。</p>
+<p><del>将打算加索引的列设置为 NOT NULL ，否则将导致引擎放弃使用索引而进行全表扫描。</del><br>订正，来自issue758 。将某一列设置为default null，where 是可以走索引，另外索引列是否设置 null 是不影响性能的。 但是，还是不建议列上允许为空。最好限制not null，因为null需要更多的存储空间并且null值无法参与某些运算。</p>
 <p>《高性能MySQL》第四章如是说：And, in case you’re wondering, allowing NULL values in the index really doesn’t impact performance 。NULL 值的索引查找流程参考：<a href="https://juejin.im/post/5d5defc2518825591523a1db" target="_blank" rel="noopener">https://juejin.im/post/5d5defc2518825591523a1db</a> ,相关阅读：MySQL中IS NULL、IS NOT NULL、!=不能用索引？胡扯！ 。</p>
 <p>删除长期未使用的索引，不用的索引的存在会造成不必要的性能损耗 MySQL 5.7 可以通过查询 sys 库的 chema_unused_indexes 视图来查询哪些索引从未被使用</p>
 <p>在使用 limit offset 查询缓慢时，可以借助索引来提高性能</p>
