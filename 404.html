@@ -11,23 +11,66 @@
 <meta name="theme-color" content="#222">
 
 
+
+
+
+
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
 
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
 
   <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
+
+
+
+
   <meta name="keywords" content="zl&mf的小屋">
+
+
+
+
+
+
+
+
 
 
 <meta name="description" content="My heart will go on    canvas {   position: relative;   z-index:-999;   left:0;   top: 0;     background-color: rgba(0,0,0,.2); }  body { 	background-color:#000000; 	color:#555555; } h4 { 	font-fam">
@@ -37,7 +80,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="My heart will go on    canvas {   position: relative;   z-index:-999;   left:0;   top: 0;     background-color: rgba(0,0,0,.2); }  body { 	background-color:#000000; 	color:#555555; } h4 { 	font-fam">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-06T01:21:54.681Z">
+<meta property="og:updated_time" content="2020-07-12T12:22:25.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zl&amp;mf的小屋">
 <meta name="twitter:description" content="My heart will go on    canvas {   position: relative;   z-index:-999;   left:0;   top: 0;     background-color: rgba(0,0,0,.2); }  body { 	background-color:#000000; 	color:#555555; } h4 { 	font-fam">
@@ -304,8 +347,6 @@ canvas {
 body {
 	background-color:#000000;
 	color:#555555;
-  width:100%;
-  height:100%;
 }
 h4 {
 	font-family:sans-serif;
@@ -1047,6 +1088,28 @@ siteTime()
 
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Vt7yuRzOBouLYir1ne2elXbv-gzGzoHsz',
+        appKey: 'W46oREgMLOIyd0NyJCVHP6hV',
+        placeholder: '既然来了，就说两句再走呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
 
   
 
