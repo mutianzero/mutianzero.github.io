@@ -80,7 +80,7 @@
 <meta property="og:site_name" content="zl&amp;mf的小屋">
 <meta property="og:description" content="My heart will go on    canvas {   position: relative;   z-index:-999;   left:0;   top: 0;     background-color: rgba(0,0,0,.2); }  body { 	background-color:#000000; 	color:#555555;     width: 100%;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-12T13:10:37.517Z">
+<meta property="og:updated_time" content="2020-07-15T02:21:09.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zl&amp;mf的小屋">
 <meta name="twitter:description" content="My heart will go on    canvas {   position: relative;   z-index:-999;   left:0;   top: 0;     background-color: rgba(0,0,0,.2); }  body { 	background-color:#000000; 	color:#555555;     width: 100%;">
@@ -377,8 +377,8 @@ FONT-FAMILY: "楷体_GB2312"
 
 <script src="js/modernizr.min.js"></script>
 
-<div style="text-align:center">
-     <canvas id="heart" ,="" width="800" height="600"></canvas>
+<div style="text-align:center;text-align:center;display:table">
+     <canvas id="heart" ,="" width="800" height="600" style="display:table-cell;vertical-align:middle"></canvas>
 </div>
 
 <script>
@@ -1090,6 +1090,27 @@ siteTime()
 
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Vt7yuRzOBouLYir1ne2elXbv-gzGzoHsz',
+        appKey: 'W46oREgMLOIyd0NyJCVHP6hV',
+        placeholder: '既然来了，就说两句再走呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
