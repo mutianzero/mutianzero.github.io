@@ -816,7 +816,7 @@ else if (window.attachEvent){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -906,7 +906,7 @@ else if (window.attachEvent){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">共101k字</span>
+  <span class="post-count">共101.1k字</span>
 </div>
 
 
@@ -1090,6 +1090,26 @@ siteTime()
 
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Vt7yuRzOBouLYir1ne2elXbv-gzGzoHsz',
+        appKey: 'W46oREgMLOIyd0NyJCVHP6hV',
+        placeholder: '既然来了，就说两句再走呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
